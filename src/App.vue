@@ -1,22 +1,30 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import { getBasicInfo } from './api/gist'
 import BasicInfo from './components/BasicInfo.vue'
+import Section from './components/Section.vue'
+
+const name = ref('')
+const role = ref('')
+
+onMounted(async () => {
+    const basicInfo = await getBasicInfo()
+
+    name.value = basicInfo.name
+    role.value = basicInfo.role
+})
 </script>
 
 <template>
     <div class="flex h-screen py-12 px-8 max-w-5xl mx-auto space-x-8">
         <header class="w-1/4">
-            <BasicInfo />
+            <BasicInfo :name="name" :role="role" />
         </header>
 
         <main class="w-3/4">
-            <section>
-                <h1 class="bg-black text-white w-fit text-sm pl-1 pr-2 font-semibold">About</h1>
-
-                <p class="text-sm px-2 py-4">
-                    Hello! My name is Yap Yee Qiang and I enjoy sharing knowledge and exploring the beauty of technology. My interest in programming started back in 2019 when I decided to try self taught myself Python, and eventually explore into the world of Web Development. Fast-forward to today, and I’ve had the privilege of building several projects, including an E-commerce platform , a
-                    logistic company dashboard, a site generation tool . My main focus these days is building accessible, inclusive products and educate people about web development at Sigma School.
-                </p>
-            </section>
+            <Section class="about-section" title="About"> 1 </Section>
+            <Section title="Projects"> 2 </Section>
+            <Section title="Work Experience"> 3 </Section>
         </main>
     </div>
 </template>

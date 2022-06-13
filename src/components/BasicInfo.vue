@@ -1,7 +1,14 @@
+<script setup>
+defineProps({
+    name: String,
+    role: String,
+})
+</script>
+
 <template>
     <div>
-        <h1 class="text-xl font-semibold">Yap Yee Qiang</h1>
-        <h2 class="text-sm text-gray-500 font-light">Software Developer</h2>
+        <h1 class="text-xl font-semibold">{{ name }}</h1>
+        <h2 class="text-sm text-gray-500 font-light">{{ role }}</h2>
         <a class="block mt-3 mb-6 text-xs font-light text-gray-800 underline decoration-dashed underline-offset-2 decoration-gray-400" href="mailto:hi@yeeqiang.me">hi@yeeqiang.me</a>
         <ul class="flex space-x-4">
             <li>
